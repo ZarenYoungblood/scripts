@@ -1,7 +1,7 @@
 import pandas as pd
 
-pts     = pd.read_excel('C:/Users/e131971/Desktop/Archive/2025/4_and_older/LRSProjects/SpeedSignstoEvent/V4-ThisOneForSure/signs.xlsx','Signs').sort_values(by=['Route_ID','MPT'])
-rs      = pd.read_excel('C:/Users/e131971/Desktop/Archive/2025/4_and_older/LRSProjects/SpeedSignstoEvent/V4-ThisOneForSure/signs.xlsx','RouteStatus')
+pts     = pd.read_excel('signs.xlsx','Signs').sort_values(by=['Route_ID','MPT'])
+rs      = pd.read_excel('signs.xlsx','RouteStatus')
 
 ptRID       = pts['Route_ID']
 ptEvents    = pts['Sign_Text']
@@ -126,7 +126,7 @@ mergedSegs  = allSegs.copy()
 mergedSegs  =mergedSegs[mergedSegs['From_Measure'] != '']
 mergedSegs.drop(['MPT','BMP','EMP'], axis=1, inplace=True)
 
-mergedSegs.to_excel('C:/Users/e131971/Desktop/Archive/2025/4_and_older/LRSProjects/SpeedSignstoEvent/V4-ThisOneForSure/MergedSegs.xlsx',index=False)
+mergedSegs.to_excel('MergedSegs.xlsx',index=False)
 
 import arcpy
 arcpy.conversion.ExcelToTable('C:/Users/e131971/Desktop/Archive/2025/4_and_older/LRSProjects/SpeedSignstoEvent/V4-ThisOneForSure/MergedSegs.xlsx', 'C:/Users/e131971/Desktop/Archive/ArcPro/ArcPro.gdb/Test_Event')
